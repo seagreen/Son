@@ -1,0 +1,28 @@
+value ::= false | null | true | object | array | number | string
+false ::= "false"
+null  ::= "null"
+true  ::= "true"
+
+object          ::= "{" ( member ( value-separator member )* )? "}"
+member          ::= string ":" value
+value-separator ::= ","
+
+array ::= "[" ( value ( value-separator value )* )? "]"
+
+number ::= minus? (positive-integer fraction? | zero fraction)
+         | zero
+
+fraction         ::= decimal-point digit* digit1-9
+positive-integer ::= digit1-9 digit*
+
+zero          ::= "0"
+digit         ::= "0" - "9"
+digit1-9      ::= "1" - "9"
+minus         ::= "-"
+decimal-point ::= "."
+
+string           ::= quotation-mark char* quotation-mark
+char             ::= unescaped | escape-character (quotation-mark | escape-character)
+quotation-mark   ::= '"'
+escape-character ::= "\"
+unescaped        ::= #x20 - #x21 | #x23 - #x5B | #x5D - #x10FFFF
