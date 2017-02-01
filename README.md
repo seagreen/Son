@@ -6,7 +6,16 @@ While I love [how simple](http://json.org/) JSON is, the format sits at an awkwa
 
 This extra information means that you can't round-trip JSON data faithfully through most machine representations because they'll throw away some details. While understandable, this can be a problem for things like hashing.
 
-Son is a subset of JSON without redundant information. Son has no insignificant whitespace, no unnecessary escape sequences, no exponential notation, no leading or trailing zeros in numbers, and no negative zero. Son parsers/generators should have an easy time round-tripping Son data through their machine representation while keeping it byte-for-byte identical to the original.
+Son is a subset of JSON without redundant information. Son parsers/generators should have an easy time round-tripping Son data through their machine representation while keeping it byte-for-byte identical to the original.
+
+# Changes from JSON
+
++ No insignificant whitespace
++ No unnecessary escape sequences
++ No exponential notation
++ No leading or trailing zeros in numbers
++ No negative zero
++ No positive sign
 
 # Status
 
