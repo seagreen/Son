@@ -1,28 +1,37 @@
-value ::= false | null | true | object | array | number | string
-false ::= "false"
-null  ::= "null"
-true  ::= "true"
+value ::= object | array | string | number | boolean | "null"
 
-object          ::= "{" ( member ( value-separator member )* )? "}"
-member          ::= string ":" value
-value-separator ::= ","
+boolean ::= "true" | "false"
 
-array ::= "[" ( value ( value-separator value )* )? "]"
+object ::= "{" ( member ( "," member )* )? "}"
+member ::= string ":" value
 
-number ::= minus? (positive-integer fraction? | zero fraction)
-         | zero
+array ::= "[" ( value ( "," value )* )? "]"
 
-fraction         ::= decimal-point digit* digit1-9
-positive-integer ::= digit1-9 digit*
+number ::= "-"? (positiveInteger fraction? | "0" fraction)
+         | "0"
 
-zero          ::= "0"
-digit         ::= "0" - "9"
-digit1-9      ::= "1" - "9"
-minus         ::= "-"
-decimal-point ::= "."
+fraction        ::= "." digit* nonZeroDigit
+positiveInteger ::= nonZeroDigit digit*
 
-string           ::= quotation-mark char* quotation-mark
-char             ::= unescaped | escape-character (quotation-mark | escape-character)
-quotation-mark   ::= '"'
-escape-character ::= "\"
-unescaped        ::= #x20 - #x21 | #x23 - #x5B | #x5D - #x10FFFF
+digit        ::= [#x30 - #x39]
+nonZeroDigit ::= [#x31 - #x39]
+
+string ::= '"'
+           ( unescaped
+           | "\" (shortcutEscape | codepointEscape)
+           )*
+           '"'
+unescaped ::= ( [#x20 - #x21]
+              | [#x23 - #x5B]
+              | [#x5D - #x10FFFF]
+              )
+shortcutEscape ::= '"'
+                 | "\"
+                 | "b"
+                 | "t"
+                 | "n"
+                 | "f"
+                 | "r"
+codepointEscape ::= "u00" ( "0" (([#x0 - #x7] | #xB) | [#xE - #xF])
+                          | [#x10 - #x1F]
+                          )

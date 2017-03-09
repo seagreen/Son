@@ -1,0 +1,62 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="railroad-diagram" width="297" height="62" viewBox="0 0 297 62">
+<defs><style type="text/css"><![CDATA[ svg.railroad-diagram {
+  background-color: hsl(30,20%,95%);
+}
+svg.railroad-diagram path {
+  stroke-width: 3;
+  stroke: black;
+  fill: none;
+}
+svg.railroad-diagram text {
+  font: bold 14px monospace;
+  text-anchor: middle;
+  cursor: pointer;
+}
+svg.railroad-diagram text.label {
+  text-anchor: start;
+}
+svg.railroad-diagram text.comment {
+  font: italic 12px monospace;
+}
+svg.railroad-diagram rect {
+  stroke-width: 3;
+  stroke: black;
+  fill: hsl(120,100%,90%);
+}
+ ]]></style></defs>
+<g transform="translate(.5 .5)">
+<path d="M 20 21 v 20 m 10 -20 v 20 m -10 -10 h 20.5"></path>
+<g>
+<path d="M40 31h0"></path>
+<path d="M256 31h0"></path>
+<path d="M40 31h10"></path>
+<g>
+<path d="M50 31h0"></path>
+<path d="M118 31h0"></path>
+<rect x="50" y="20" width="68" height="22"></rect>
+<text x="84" y="35">string</text>
+</g>
+<path d="M118 31h10"></path>
+<path d="M128 31h10"></path>
+<g>
+<path d="M138 31h0"></path>
+<path d="M166 31h0"></path>
+<rect x="138" y="20" width="28" height="22" rx="10" ry="10"></rect>
+<text x="152" y="35">:</text>
+</g>
+<path d="M166 31h10"></path>
+<path d="M176 31h10"></path>
+<g>
+<path d="M186 31h0"></path>
+<path d="M246 31h0"></path>
+<rect x="186" y="20" width="60" height="22"></rect>
+<text x="216" y="35">value</text>
+</g>
+<path d="M246 31h10"></path>
+</g>
+<path d="M 256 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path>
+</g>
+</svg>

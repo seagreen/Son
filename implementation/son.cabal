@@ -1,0 +1,94 @@
+name:          son
+version:       0.1.0.0
+synopsis:      Son parser and generator
+homepage:      https://github.com/seagreen/son
+license:       MIT
+author:        Ian Grant Jeffries
+maintainer:    ian@housejeffries.com
+category:      Data
+build-type:    Simple
+cabal-version: >=1.10
+
+library
+  hs-source-dirs:
+    src
+  default-language: Haskell2010
+  default-extensions:
+    GeneralizedNewtypeDeriving
+    NoImplicitPrelude
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+  ghc-options:
+    -Wall
+  exposed-modules:
+    Son
+    Son.Generator
+    Son.Parser
+  build-depends:
+      base
+    , aeson
+    , attoparsec
+    , bytestring
+    , protolude
+    , QuickCheck
+    , scientific
+    , text
+    , unordered-containers
+    , vector
+
+executable son
+  hs-source-dirs:
+    src
+  default-language: Haskell2010
+  default-extensions:
+    GeneralizedNewtypeDeriving
+    NoImplicitPrelude
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+  ghc-options:
+    -Wall
+  main-is: Main.hs
+  build-depends:
+      base
+    , aeson
+    , attoparsec
+    , bytestring
+    , protolude
+    , QuickCheck
+    , scientific
+    , text
+    , unordered-containers
+    , vector
+
+    , optparse-applicative
+    , son
+
+test-suite test
+  hs-source-dirs:
+    test
+  main-is: Test.hs
+  other-modules:
+    JQ
+  default-language: Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+  type: exitcode-stdio-1.0
+  ghc-options:
+    -Wall
+  build-depends:
+      base
+    , aeson
+    , bytestring
+    , process
+    , protolude
+    , QuickCheck
+    , son
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , text
