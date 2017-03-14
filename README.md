@@ -29,7 +29,7 @@ Son is a subset of JSON without redundant options. It's intended for machine-to-
 
 + No unnecessary escape sequences
 
-JSON doesn't allow Unicode characters below codepoint x20 or unescaped `"` and `\` in strings. To allow these to still be encoded in JSON we've had to keep a few escape sequences. We use two-character esacape sequences (e.g. `\n`) when available, and six-character ones (e.g. `\u0001`) when not.
+JSON doesn't allow Unicode characters below codepoint x20 or unescaped `"` and `\` in strings. To allow these to still be encoded in JSON we've had to keep a few escape sequences. We use two-character escape sequences (e.g. `\n`) when available, and six-character ones (e.g. `\u0001`) when not.
 
 ### shortcutEscape:
 
