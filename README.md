@@ -47,7 +47,7 @@ Unreleased. Like JSON, the intention is that once Son is released it will never 
 
 The formal part of its specification is [./son.ebnf](./son.ebnf). It uses the EBNF notation described [here](https://www.w3.org/TR/2004/REC-xml11-20040204/#sec-notation).
 
-Additionally: object keys must be unique. Object members must be sorted by lexicographic order of their keys.
+Additionally: object keys must be unique. Object members must be sorted by ascending lexicographic order of their keys.
 
 # Implementations
 
