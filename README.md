@@ -49,7 +49,7 @@ The formal part of its specification is [./son.ebnf](./son.ebnf). It uses the EB
 
 Additionally:
 
-+ The only valid byte encoding of Son is UTF-8.
++ The only valid byte encoding of Son is UTF-8. Byte order marks are forbidden.
 
 + Object keys must be unique.
 
