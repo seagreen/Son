@@ -32,6 +32,6 @@ shortcutEscape ::= '"'
                  | "n"
                  | "f"
                  | "r"
-codepointEscape ::= "u00" ( "0" (([#x0 - #x7] | #xB) | [#xE - #xF])
+codepointEscape ::= "u00" ( "0" ([#x0 - #x7] | #xB | [#xE - #xF])
                           | [#x10 - #x1F]
                           )
