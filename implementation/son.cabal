@@ -3,6 +3,7 @@ version:       0.1.0.0
 synopsis:      Son parser and generator
 homepage:      https://github.com/seagreen/son
 license:       MIT
+license-file:  MIT-LICENSE.txt
 author:        Ian Grant Jeffries
 maintainer:    ian@housejeffries.com
 category:      Data
