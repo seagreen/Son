@@ -59,6 +59,12 @@ Additionally:
 
 + Haskell reference implementation: [./implementation](./implementation).
 
+# Special Thanks
+
++ [@chmike](https://github.com/chmike) and [@etherealvisage](https://github.com/etherealvisage): key ordering should specify "ascending".
+
++ [@John-Nagle](https://github.com/John-Nagle): UTF-8 should be the only allowed encoding.
+
 # Differences between this and related projects
 
 See [here](https://housejeffries.com/page/7).
