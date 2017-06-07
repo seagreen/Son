@@ -26,22 +26,11 @@ sonValue = fmap Object       sonObject
 sonObject :: Parser (HashMap Text Value)
 sonObject = do
   void (char '{')
-  hm <- option mempty elements
+  es <- element `sepBy` char ','
   void (char '}')
-  pure hm
+  checkOrder es
+  pure (HM.fromList es)
   where
-    elements :: Parser (HashMap Text Value)
-    elements = do
-      e <- element
-      es <- many anotherElement
-      checkOrder (e:es)
-      pure (HM.fromList (e:es))
-
-    anotherElement :: Parser (Text, Value)
-    anotherElement = do
-      void (char ',')
-      element
-
     element :: Parser (Text, Value)
     element = do
       t <- sonString
@@ -61,20 +50,9 @@ sonObject = do
 sonArray :: Parser (Vector Value)
 sonArray = do
   void (char '[')
-  xs <- option mempty items
+  xs <- V.fromList <$> sonValue `sepBy` char ','
   void (char ']')
   pure xs
-  where
-    items :: Parser (Vector Value)
-    items = do
-      y <- sonValue
-      ys <- many anotherItem
-      pure (V.fromList (y:ys))
-
-    anotherItem :: Parser Value
-    anotherItem = do
-      void (char ',')
-      sonValue
 
 sonString :: Parser Text
 sonString = do
