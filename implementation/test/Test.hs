@@ -54,7 +54,7 @@ isSameJSON a =
 roundtrip :: Son -> Property
 roundtrip a =
   let b = Son.generate a
-      c = Son.decode(encodeUtf8 b)
+      c = Son.decode (encodeUtf8 b)
       s = unlines [ "serialized to: " <> T.unpack b
                   , "parsed to: " <> show c
                   ]
