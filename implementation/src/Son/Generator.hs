@@ -29,10 +29,13 @@ genValue (Bool False) = "false"
 genValue Null         = "null"
 
 genObject :: HashMap Text Value -> Builder
-genObject hm = "{" <> foldl' go mempty (sortOn fst (HM.toList hm)) <> "}"
+genObject hm = "{" <> foldl' addMember mempty sortedMembers <> "}"
   where
-    go :: Builder -> (Text, Value) -> Builder
-    go a (k,v)
+    sortedMembers :: [(Text, Value)]
+    sortedMembers = sortOn fst (HM.toList hm)
+
+    addMember :: Builder -> (Text, Value) -> Builder
+    addMember a (k,v)
       | a == mempty = pair
       | otherwise   = a <> "," <> pair
       where
@@ -40,10 +43,10 @@ genObject hm = "{" <> foldl' go mempty (sortOn fst (HM.toList hm)) <> "}"
         pair = genString k <> ":" <> genValue v
 
 genArray :: Vector Value -> Builder
-genArray xs = "[" <> foldl' go mempty xs <> "]"
+genArray xs = "[" <> foldl' addElement mempty xs <> "]"
   where
-    go :: Builder -> Value -> Builder
-    go a v
+    addElement :: Builder -> Value -> Builder
+    addElement a v
       | a == mempty = genValue v
       | otherwise   = a <> "," <> genValue v
 

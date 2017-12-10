@@ -41,22 +41,29 @@ generate = generateSon . _unSon
 encode :: Son -> ByteString
 encode = encodeUtf8 . generate
 
--- * Arbitrary
+-- * Random Son value creation (for testing)
 
 instance Arbitrary Son where
-  arbitrary = Son <$> sized f
+  arbitrary = Son <$> sized arbitraryValue
     where
-      f :: Int -> Gen Value
-      f n | n <= 1    = oneof nonRecursive
-          | otherwise = oneof $
-                fmap (Array . V.fromList) (traverse (const (f (n `div` 10)))
-                  =<< (arbitrary :: Gen [()]))
-              : fmap (Object . HM.fromList) (traverse (const (g (n `div` 10)))
-                  =<< (arbitrary :: Gen [()]))
-              : nonRecursive
+      arbitraryValue :: Int -> Gen Value
+      arbitraryValue n
+        | n <= 1    = oneof nonRecursive
+        | otherwise = oneof $
+              (Array . V.fromList <$> arbitraryArray (n `div` 10))
+            : (Object . HM.fromList <$> arbitraryObject (n `div` 10))
+            : nonRecursive
 
-      g :: Int -> Gen (Text, Value)
-      g n = (,) <$> arbitraryText <*> f n
+      arbitraryArray :: Int -> Gen [Value]
+      arbitraryArray n = traverse (const (arbitraryValue n))
+                     =<< (arbitrary :: Gen [()])
+
+      arbitraryObject :: Int -> Gen [(Text, Value)]
+      arbitraryObject n = traverse (const textAndValue)
+                      =<< (arbitrary :: Gen [()])
+        where
+          textAndValue :: Gen (Text, Value)
+          textAndValue = (,) <$> arbitraryText <*> arbitraryValue n
 
       nonRecursive :: [Gen Value]
       nonRecursive =
