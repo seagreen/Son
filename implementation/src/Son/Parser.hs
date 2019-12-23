@@ -1,7 +1,7 @@
 
 module Son.Parser where
 
-import           Protolude hiding (take)
+import           Protolude hiding (option, take)
 
 import           Control.Monad.Fail (fail)
 import           Data.Aeson
