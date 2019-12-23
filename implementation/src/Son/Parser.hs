@@ -1,18 +1,17 @@
-
 module Son.Parser where
 
-import           Protolude hiding (option, take)
+import Control.Monad.Fail (fail)
+import Data.Aeson
+import Data.Attoparsec.Text
+import Data.Char (isDigit)
+import Data.HashMap.Strict (HashMap)
+import Data.Scientific (Scientific)
+import Data.String (unlines)
+import Data.Vector (Vector)
+import Protolude hiding (option, take)
 
-import           Control.Monad.Fail (fail)
-import           Data.Aeson
-import           Data.Attoparsec.Text
-import           Data.Char (isDigit)
-import           Data.HashMap.Strict (HashMap)
 import qualified Data.HashMap.Strict as HM
-import           Data.Scientific (Scientific)
-import           Data.String (unlines)
 import qualified Data.Text as T
-import           Data.Vector (Vector)
 import qualified Data.Vector as V
 
 sonValue :: Parser Value

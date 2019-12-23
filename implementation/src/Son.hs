@@ -1,19 +1,17 @@
-
 module Son where
 
-import           Protolude
+import Data.Aeson
+import Data.Attoparsec.Text (endOfInput, parseOnly)
+import Data.Scientific (Scientific, fromFloatDigits)
+import Data.Text.Encoding.Error (UnicodeException)
+import Protolude
+import Son.Generator (generateSon)
+import Son.Parser (sonValue)
+import Test.QuickCheck hiding (generate)
 
-import           Data.Aeson
-import           Data.Attoparsec.Text (endOfInput, parseOnly)
 import qualified Data.HashMap.Strict as HM
-import           Data.Scientific (Scientific, fromFloatDigits)
 import qualified Data.Text as T
-import           Data.Text.Encoding.Error (UnicodeException)
 import qualified Data.Vector as V
-import           Test.QuickCheck hiding (generate)
-
-import           Son.Generator (generateSon)
-import           Son.Parser (sonValue)
 
 newtype Son
   = Son { _unSon :: Value }

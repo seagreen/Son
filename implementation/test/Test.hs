@@ -1,19 +1,17 @@
-
 module Main where
 
-import           Protolude
+import Data.Aeson
+import Data.List (unlines)
+import Data.String (String)
+import JQ
+import Protolude
+import Son (Son(..))
+import Test.QuickCheck.Monadic
+import Test.Tasty
+import Test.Tasty.HUnit hiding (assert)
+import Test.Tasty.QuickCheck
 
-import           Data.Aeson
-import           Data.List (unlines)
-import           Data.String (String)
 import qualified Data.Text as T
-import           Test.Tasty
-import           Test.Tasty.HUnit hiding (assert)
-import           Test.Tasty.QuickCheck
-import           Test.QuickCheck.Monadic
-
-import           JQ
-import           Son (Son(..))
 import qualified Son
 
 main :: IO ()

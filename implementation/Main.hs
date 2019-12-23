@@ -1,14 +1,12 @@
-
 module Main where
 
-import           Protolude
+import Data.Aeson
+import Options.Applicative
+import Protolude
+import Son (Son(Son))
 
-import           Data.Aeson
 import qualified Data.ByteString as BS
 import qualified Data.Text as T
-import           Options.Applicative
-
-import           Son (Son(Son))
 import qualified Son
 
 data Mode

@@ -1,20 +1,19 @@
-
 module Son.Generator where
 
-import           Protolude
+import Data.Aeson
+import Data.Char (intToDigit)
+import Data.HashMap.Strict (HashMap)
+import Data.Scientific (Scientific)
+import Data.String (String)
+import Data.Text.Lazy.Builder (Builder)
+import Data.Vector (Vector)
+import Protolude
 
-import           Data.Aeson
-import           Data.Char (intToDigit)
-import           Data.HashMap.Strict (HashMap)
 import qualified Data.HashMap.Strict as HM
-import           Data.Scientific (Scientific)
 import qualified Data.Scientific as Sci
-import           Data.String (String)
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as TL
-import           Data.Text.Lazy.Builder (Builder)
 import qualified Data.Text.Lazy.Builder as TB
-import           Data.Vector (Vector)
 
 generateSon :: Value -> Text
 generateSon = TL.toStrict . TB.toLazyText . genValue
